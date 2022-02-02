@@ -39,8 +39,8 @@ function GameServiceFactory($http, $log) {
     }
 
 
-    function updateGame(game, id) {
-        return $http.put(REST_SERVICE_URI + id, game).then(
+    function updateGame(game) {
+        return $http.put(REST_SERVICE_URI + game.id, game).then(
             function (response) {
                 return response.data
             },
@@ -50,8 +50,8 @@ function GameServiceFactory($http, $log) {
         );
     }
 
-    function deleteGame(id) {
-        return $http.delete(REST_SERVICE_URI + id).then(
+    function deleteGame(game) {
+        return $http.delete(REST_SERVICE_URI + game.id).then(
             function (response) {
                 return response.data
             },

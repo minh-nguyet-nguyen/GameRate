@@ -1,7 +1,5 @@
 package com.minh.project.configuration;
 
-import javax.servlet.Filter;
-
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 public class GameRateInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -20,11 +18,4 @@ public class GameRateInitializer extends AbstractAnnotationConfigDispatcherServl
     protected String[] getServletMappings() {
         return new String[] { "/" };
     }
-    
-    @Override
-    protected Filter[] getServletFilters() {
-    	Filter [] singleton = { new CORSFilter() };
-    	return singleton;
-	}
- 
 }

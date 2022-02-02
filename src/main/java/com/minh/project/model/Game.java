@@ -4,7 +4,7 @@ import com.minh.project.model.Game;
 
 public class Game {
 
-	private long id;
+	private Long id;
 	
 	private String title;
 	
@@ -13,21 +13,21 @@ public class Game {
 	private Integer rating;
 	
 	public Game(){
-		id = 0;
+		id = 0L;
 	}
 	
-	public Game(long id, String title, String comment, Integer rating){
+	public Game(Long id, String title, String comment, Integer rating){
 		this.id = id;
 		this.title = title;
 		this.comment = comment;
 		this.rating = rating;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

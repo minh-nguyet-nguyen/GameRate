@@ -20,7 +20,7 @@ angular.module('myApp').controller('GameController', ['$scope', '$log' ,'GameSer
                 self.games = d;
             },
             function(errResponse){
-                $log.error('Error while fetching Games');
+                $log.error('Error while fetching Games ', errResponse);
             }
         );
     }
@@ -30,27 +30,27 @@ angular.module('myApp').controller('GameController', ['$scope', '$log' ,'GameSer
             .then(
             fetchAllGames,
             function(errResponse){
-                $log.error('Error while creating Game');
+                $log.error('Error while creating Game ', errResponse);
             }
         );
     }
 
-    function updateGame(game, id){
-        GameService.updateGame(game, id)
+    function updateGame(game){
+        GameService.updateGame(game)
             .then(
             fetchAllGames,
             function(errResponse){
-                $log.error('Error while updating Game');
+                $log.error('Error while updating Game ', errResponse);
             }
         );
     }
 
-    function deleteGame(id){
-        GameService.deleteGame(id)
+    function deleteGame(game){
+        GameService.deleteGame(game)
             .then(
             fetchAllGames,
             function(errResponse){
-                $log.error('Error while deleting Game');
+                $log.error('Error while deleting Game ', errResponse);
             }
         );
     }

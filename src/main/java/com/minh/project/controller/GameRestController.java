@@ -20,6 +20,7 @@ import com.minh.project.model.Game;
 import com.minh.project.service.GameService;
  
 @RestController
+@RequestMapping(value = "/game/")
 public class GameRestController {
 	
 	Logger logger = LoggerFactory.getLogger(GameRestController.class);
@@ -29,7 +30,7 @@ public class GameRestController {
  
     
     //-------------------Retrieve All Games--------------------------------------------------------
-    @RequestMapping(value = "/game/", method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> listAllGames() {
         List<Game> games = gameService.findAllGames();
         if(games.isEmpty()){
@@ -41,7 +42,7 @@ public class GameRestController {
  
     
     //-------------------Retrieve Single Game--------------------------------------------------------
-    @RequestMapping(value = "/game/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> getGame(@PathVariable("id") long id) {
         logger.debug("Fetching Game with id " + id);
         Game game = gameService.findById(id);
@@ -55,8 +56,8 @@ public class GameRestController {
      
      
     //-------------------Create a Game--------------------------------------------------------
-    @RequestMapping(value = "/game/", method = RequestMethod.POST)
-    public ResponseEntity<?> createGame(@RequestBody Game game, UriComponentsBuilder ucBuilder) {
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> createGame(@RequestBody Game game) {
         logger.debug("Creating Game " + game.getTitle());
  
         if (gameService.isGameExist(game)) {
@@ -65,17 +66,14 @@ public class GameRestController {
         }
  
         gameService.saveGame(game);
- 
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/game/{id}").buildAndExpand(game.getId()).toUri());
-        return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
+        return new ResponseEntity<Game>(game, HttpStatus.CREATED);
     }
  
     
      
     //------------------- Update a Game --------------------------------------------------------
-    @RequestMapping(value = "/game/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateGame(@PathVariable("id") long id, @RequestBody Game game) {
+    @RequestMapping(value = "{id}", method = RequestMethod.PUT)
+    public ResponseEntity<?> updateGame(@PathVariable("id") Long id, @RequestBody Game game) {
         logger.debug("Updating Game " + id);
          
         Game currentGame = gameService.findById(id);
@@ -96,7 +94,7 @@ public class GameRestController {
     
     
     //------------------- Delete a Game --------------------------------------------------------
-    @RequestMapping(value = "/game/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteGame(@PathVariable("id") long id) {
         logger.debug("Fetching & Deleting Game with id " + id);
  
@@ -113,7 +111,7 @@ public class GameRestController {
      
     
     //------------------- Delete All Games --------------------------------------------------------
-    @RequestMapping(value = "/game/", method = RequestMethod.DELETE)
+    @RequestMapping(method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteAllGames() {
         logger.debug("Deleting All Games");
  
