@@ -6,7 +6,7 @@ import com.minh.project.model.Game;
 
 public interface GameService {
 	
-	Game findById(long id);
+	Game findById(Long id);
 	
 	Game findByTitle(String title);
 	
@@ -14,7 +14,7 @@ public interface GameService {
 	
 	void updateGame(Game user);
 	
-	void deleteGameById(long id);
+	void deleteGameById(Long id);
 
 	List<Game> findAllGames(); 
 	

@@ -24,7 +24,7 @@ public class GameServiceImpl implements GameService{
 		return games;
 	}
 	
-	public Game findById(long id) {
+	public Game findById(Long id) {
 		for(Game game : games){
 			if(game.getId() == id){
 				return game;
@@ -52,7 +52,7 @@ public class GameServiceImpl implements GameService{
 		games.set(index, game);
 	}
 
-	public void deleteGameById(long id) {
+	public void deleteGameById(Long id) {
 		for (Iterator<Game> iterator = games.iterator(); iterator.hasNext(); ) {
 		    Game game = iterator.next();
 		    if (game.getId() == id) {

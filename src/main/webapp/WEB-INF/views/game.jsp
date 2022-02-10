@@ -81,8 +81,8 @@
                               <td><span ng-bind="game.comment"></span></td>
                               <td><span ng-bind="game.rating"></span></td>
                               <td>
-                              <button type="button" ng-click="ctrl.edit(game.id)" class="btn btn-success custom-width">Edit</button>
-                              <button type="button" ng-click="ctrl.remove(game.id)" class="btn btn-danger custom-width">Remove</button>
+                              <button type="button" ng-click="ctrl.edit(game)" class="btn btn-success custom-width">Edit</button>
+                              <button type="button" ng-click="ctrl.remove(game)" class="btn btn-danger custom-width">Remove</button>
                               </td>
                           </tr>
                       </tbody>

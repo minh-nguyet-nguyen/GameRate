@@ -43,7 +43,7 @@ public class GameRestController {
     
     //-------------------Retrieve Single Game--------------------------------------------------------
     @RequestMapping(value = "{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> getGame(@PathVariable("id") long id) {
+    public ResponseEntity<?> getGame(@PathVariable("id") Long id) {
         logger.debug("Fetching Game with id " + id);
         Game game = gameService.findById(id);
         if (game == null) {
@@ -95,7 +95,7 @@ public class GameRestController {
     
     //------------------- Delete a Game --------------------------------------------------------
     @RequestMapping(value = "{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteGame(@PathVariable("id") long id) {
+    public ResponseEntity<?> deleteGame(@PathVariable("id") Long id) {
         logger.debug("Fetching & Deleting Game with id " + id);
  
         Game game = gameService.findById(id);
