@@ -1,10 +1,10 @@
-package com.minh.project.service;
+package com.minh.project.dao;
 
 import java.util.List;
 
 import com.minh.project.model.Game;
 
-public interface GameService {
+public interface GameDao {
 	
 	Game findById(Long id);
 	
