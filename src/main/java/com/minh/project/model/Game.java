@@ -1,27 +1,31 @@
 package com.minh.project.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import com.minh.project.model.Game;
 
+@Entity
+@Table(name = "GAME")
 public class Game {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "ID")
 	private Long id;
 	
+	@Column(name = "TITLE", nullable = false)
 	private String title;
 	
+	@Column(name = "COMMENT", nullable = true)
 	private String comment;
 	
+	@Column(name = "RATING", nullable = false)
 	private Integer rating;
-	
-	public Game(){
-		id = 0L;
-	}
-	
-	public Game(Long id, String title, String comment, Integer rating){
-		this.id = id;
-		this.title = title;
-		this.comment = comment;
-		this.rating = rating;
-	}
 
 	public Long getId() {
 		return id;

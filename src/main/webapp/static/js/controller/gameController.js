@@ -66,7 +66,8 @@ angular.module('myApp').controller('GameController', ['$scope', '$log' ,'GameSer
         reset();
     }
 
-    function edit(id){
+    function edit(game){
+		var id = game.id;
         $log.log('id to be edited', id);
         for(var i = 0; i < self.games.length; i++){
             if(self.games[i].id === id) {
@@ -76,13 +77,13 @@ angular.module('myApp').controller('GameController', ['$scope', '$log' ,'GameSer
         }
     }
 
-    function remove(id){
-        $log.log('id to be deleted', id);
+    function remove(game){
+        $log.log('id to be deleted', game.id);
         //clean form after game is deleted
-        if(self.game.id === id) { 
+        if(self.game.id === game.id) { 
             reset();
         }
-        deleteGame(id);
+        deleteGame(game);
     }
 
 
