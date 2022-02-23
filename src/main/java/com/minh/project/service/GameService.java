@@ -1,22 +1,20 @@
 package com.minh.project.service;
 
-import java.util.List;
+import org.springframework.http.ResponseEntity;
 
-import com.minh.project.model.Game;
+import com.minh.project.model.GameView;
 
 public interface GameService {
 	
-	Game findById(Long id);
+	ResponseEntity<GameView> findById(Long id);
 	
-	Game findByTitle(String title);
+	ResponseEntity<GameView> findByTitle(String title);
 	
-	void saveGame(Game game);
+	ResponseEntity<GameView> saveGame(GameView game);
 	
-	void updateGame(Game game);
+	ResponseEntity<GameView> updateGame(GameView game);
 	
 	void deleteGameById(Long id);
 
-	List<Game> findAllGames();
-	
-	public boolean isGameExist(Game game);	
+	ResponseEntity<GameView[]> findAllGames();
 }
