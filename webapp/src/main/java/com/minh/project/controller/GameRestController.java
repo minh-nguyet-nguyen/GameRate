@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.minh.project.manager.GameManager;
 import com.minh.project.model.GameView;
-import com.minh.project.service.GameService;
  
 @RestController
 @RequestMapping(value = "/game/")
@@ -22,13 +22,13 @@ public class GameRestController {
 	Logger logger = LoggerFactory.getLogger(GameRestController.class);
 	
     @Autowired
-    private GameService gameService;
+    private GameManager gameManager;
  
     
     //-------------------Retrieve All Games--------------------------------------------------------
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<?> listAllGames() {
-        return gameService.findAllGames();
+        return gameManager.findAllGames();
     }
  
  
@@ -38,7 +38,7 @@ public class GameRestController {
     public ResponseEntity<?> getGame(@PathVariable("id") Long id) {
         logger.debug("Fetching Game with id " + id);
         
-        return gameService.findById(id);
+        return gameManager.findById(id);
     }
  
      
@@ -47,7 +47,7 @@ public class GameRestController {
     public ResponseEntity<?> createGame(@RequestBody GameView game) {
         logger.debug("Creating Game " + game.getTitle());
  
-        return gameService.saveGame(game);
+        return gameManager.saveGame(game);
     }
  
      
@@ -56,7 +56,7 @@ public class GameRestController {
     public ResponseEntity<?> updateGame(@PathVariable("id") Long id, @RequestBody GameView game) {
         logger.debug("Updating Game " + id);
          
-        return gameService.updateGame(game);
+        return gameManager.updateGame(game);
     }
  
     
@@ -65,7 +65,7 @@ public class GameRestController {
     public ResponseEntity<?> deleteGame(@PathVariable("id") Long id) {
         logger.debug("Fetching & Deleting Game with id " + id);
  
-        gameService.deleteGameById(id);
+        gameManager.deleteGameById(id);
         return new ResponseEntity<GameView>(HttpStatus.NO_CONTENT);
     }
  

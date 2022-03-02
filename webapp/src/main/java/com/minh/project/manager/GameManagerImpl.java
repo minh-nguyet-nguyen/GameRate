@@ -1,4 +1,4 @@
-package com.minh.project.service;
+package com.minh.project.manager;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +13,9 @@ import org.springframework.web.client.RestTemplate;
 import com.minh.project.model.GameView;
 
 @Service
-public class GameServiceImpl implements GameService{
+public class GameManagerImpl implements GameManager{
 	
-	Logger logger = LoggerFactory.getLogger(GameServiceImpl.class);
+	Logger logger = LoggerFactory.getLogger(GameManagerImpl.class);
 	private final String RESOURCE_URI = "/game/";
 	
 	@Value("${service.url}")

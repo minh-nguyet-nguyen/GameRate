@@ -1,10 +1,10 @@
-package com.minh.project.service;
+package com.minh.project.manager;
 
 import org.springframework.http.ResponseEntity;
 
 import com.minh.project.model.GameView;
 
-public interface GameService {
+public interface GameManager {
 	
 	ResponseEntity<GameView> findById(Long id);
 	
