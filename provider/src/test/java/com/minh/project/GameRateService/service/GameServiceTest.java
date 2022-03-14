@@ -3,11 +3,13 @@ package com.minh.project.GameRateService.service;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doReturn;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -114,6 +116,21 @@ public class GameServiceTest extends AbstractTestNGSpringContextTests {
 	@Test(expectedExceptions = {Exception.class}, expectedExceptionsMessageRegExp = "No game id provided")
 	public void testDeleteGameByIdWithNullId() {
 		gameService.deleteGameById(null);
+	}
+	
+	@Test
+	public void testFindAllGames() {
+		GameImpl game = createSampleGameImpl();
+		List<GameImpl> gamesList = new ArrayList<GameImpl>();
+		gamesList.add(game);
+		when(gameRepository.save(any())).thenReturn(game);
+		when(gameRepository.findAll()).thenReturn(gamesList);
+		
+		gameService.saveGame(game);
+		List<Game> games = gameService.findAllGames();
+		assertNotNull(games);
+		assertEquals(games.size(), 1);
+		assertEquals(games.get(0).getTitle(), "test");
 	}
 	
 	@Test
