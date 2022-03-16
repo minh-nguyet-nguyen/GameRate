@@ -42,13 +42,13 @@ public class GameTest {
 	@FindBy(id="submitButton")
 	private WebElement submitButton;
 	
-    @FindBy(id="list")
+	@FindBy(id="list")
    	private WebElement list;
-    
-    @FindBy(id="gameId")
+	
+	@FindBy(id="gameId")
   	private WebElement gameId;
-    
-    @FindBy(id="gameTitle")
+	
+	@FindBy(id="gameTitle")
 	private WebElement gameTitle;
 	
 	@FindBy(id="gameComment")

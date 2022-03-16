@@ -38,12 +38,12 @@ public class GameServiceTest extends AbstractTestNGSpringContextTests {
 	GameService gameService;
 	
 	@BeforeClass
-    public void setup() {
+	public void setup() {
         MockitoAnnotations.openMocks(this);
     }
 	
 	@Test
-	public void testFindById() {
+	public void givenPreSavedGame_whenSearchedUsingValidId_thenGameShouldBeFound() {
 		GameImpl game = createSampleGameImpl();
 		when(gameRepository.getById(anyLong())).thenReturn(game);
 
@@ -54,18 +54,16 @@ public class GameServiceTest extends AbstractTestNGSpringContextTests {
 	}
 	
 	@Test
-	public void testFindByTitle() {
+	public void givenPreSavedGame_whenSearchedUsingValidTitle_thenGameShouldBeFound() {
 		GameImpl game = createSampleGameImpl();
 		when(gameRepository.findByTitle(anyString())).thenReturn(game);
 		
 		Game fromService = gameService.findByTitle("test");
 		assertEquals(GameImpl.convert(fromService), game);
-		
-		verify(gameRepository).findByTitle("test");
 	}
 	
 	@Test
-	public void testSaveGame() {
+	public void givenValidInputFields_whenSaveButtonIsClicked_thenGameShouldBeSaved() {
 		GameImpl game = createSampleGameImpl();
 		when(gameRepository.save(any())).thenReturn(game);
 		
@@ -76,12 +74,12 @@ public class GameServiceTest extends AbstractTestNGSpringContextTests {
 	}
 	
 	@Test(expectedExceptions = {Exception.class}, expectedExceptionsMessageRegExp = "No game provided to save")
-	public void testSaveNullGame() {
+	public void givenNullGame_whenSaveButtonIsClicked_thenErrorShouldBeThrown() {
 		gameService.saveGame(null);
 	}
 	
 	@Test
-	public void testUpdateGame() {
+	public void givenPreSavedGame_whenGameFieldIsChangedAndSaved_thenGameShouldBeUpdated() {
 		GameImpl game = createSampleGameImpl();
 		GameImpl updatedGame = new GameImpl();
 		updatedGame = createSampleGameImpl();
@@ -102,24 +100,24 @@ public class GameServiceTest extends AbstractTestNGSpringContextTests {
 	}
 	
 	@Test(expectedExceptions = {Exception.class}, expectedExceptionsMessageRegExp = "No game provided to update")
-	public void testUpdateWithNullGame() {
+	public void givenNullGame_whenAttemptingToUpdateGame_thenErrorShouldBeThrown() {
 		gameService.updateGame(null);
 	}
 	
 	@Test
-	public void testDeleteGameById() {
+	public void givenValidId_whenDeletedWithId_thenGameShouldBeDeleted() {
 		doNothing().when(gameRepository).deleteById(anyLong());
 		gameService.deleteGameById(1L);
 		verify(gameRepository).deleteById(1L);
 	}
 	
 	@Test(expectedExceptions = {Exception.class}, expectedExceptionsMessageRegExp = "No game id provided")
-	public void testDeleteGameByIdWithNullId() {
+	public void givenNullGame_whenAttemptingToDelete_thenErrorShouldBeThrown() {
 		gameService.deleteGameById(null);
 	}
 	
 	@Test
-	public void testFindAllGames() {
+	public void givenPreSavedGames_whenFindAllIsCalled_thenListOfGamesIsReturned() {
 		GameImpl game = createSampleGameImpl();
 		List<GameImpl> gamesList = new ArrayList<GameImpl>();
 		gamesList.add(game);
@@ -134,7 +132,7 @@ public class GameServiceTest extends AbstractTestNGSpringContextTests {
 	}
 	
 	@Test
-	public void testGameDoesExists() {
+	public void givenPreSavedGame_whenIsGameExistsCalled_thenShouldReturnTrue() {
 		GameImpl game = createSampleGameImpl();
 		when(gameRepository.save(any())).thenReturn(game);
 		when(gameRepository.findByTitle(anyString())).thenReturn(game);
@@ -147,7 +145,7 @@ public class GameServiceTest extends AbstractTestNGSpringContextTests {
 	}
 	
 	@Test
-	public void testGameDoesNotExists() {
+	public void givenUnsavedGame_whenIsGameExistsCalled_thenShouldReturnFalse() {
 		GameImpl game = createSampleGameImpl();
 		GameImpl game2 = createSampleGameImpl();
 		game2.setTitle("test2");
