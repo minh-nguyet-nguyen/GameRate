@@ -7,8 +7,8 @@
 <title>Home</title>
 </head>
 <body class="text-center">
-	<div align="center">
-		<h2>WELCOME ${user}</h2>
+	<div id="welcomeDiv" align="center">
+		<h2 id="welcomeMessage">WELCOME ${user}</h2>
 		<h3>GameRate: List And Rate All Your Games!</h3>
 		<a href="/GameRate/game" style="font-size:18px" id="gameLink">Get Started</a>
 	</div>

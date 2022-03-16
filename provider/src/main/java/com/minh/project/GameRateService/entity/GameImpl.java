@@ -29,9 +29,9 @@ public class GameImpl implements Game {
 	@Column(name = "RATING", nullable = false)
 	private Integer rating;
 	
-	GameImpl() {}
+	public GameImpl() {}
 	
-	GameImpl(Game game) {
+	public GameImpl(Game game) {
 		BeanUtils.copyProperties(game, this, GameImpl.class);
 	}
 	
