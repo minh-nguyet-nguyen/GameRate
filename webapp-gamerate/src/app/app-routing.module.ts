@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GameListComponent } from './components/game/game-list.component';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-    { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomeComponent },
-    { path: 'game', component: GameListComponent },
-    { path: '', redirectTo: 'login', pathMatch: 'full' }
+    { path: 'login', loadChildren: () => import('./modules/login/login.module').then((m) => m.LoginModule) },
+    { path: 'home', loadChildren: () => import('./modules/home/home.module').then((m) => m.HomeModule) },
+    { path: 'game', loadChildren: () => import('./modules/game/game.module').then((m) => m.GameModule) },
+    { path: '', loadChildren: () => import('./modules/login/login.module').then((m) => m.LoginModule) }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class AppRoutingModule { }

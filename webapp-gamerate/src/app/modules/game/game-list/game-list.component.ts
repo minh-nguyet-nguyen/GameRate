@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from "rxjs";
-import { Game } from "./game.model";
-import { GameService } from "./game.service";
+import { Game } from "../model/game.model";
+import { GameService } from "../service/game.service";
 
 @Component({
     selector: 'game-list',

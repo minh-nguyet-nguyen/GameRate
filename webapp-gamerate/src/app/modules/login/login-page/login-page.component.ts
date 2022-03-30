@@ -4,11 +4,10 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login-page.component.html',
+  styleUrls: ['./login-page.component.css']
 })
-export class LoginComponent implements OnInit {
-  @Output() messageEvent = new EventEmitter<string>();
+export class LoginPageComponent implements OnInit {
   login: FormGroup;
   title: string = 'GameRate';
   error: string = "";
@@ -27,7 +26,7 @@ export class LoginComponent implements OnInit {
     let password = this.login.value['password'];
 		if ((username != null && username !== "") && (password != null && password !== "")) {
       this.login.reset();
-      this.router.navigate(['/home'])
+      this.router.navigate(['/home']);
 		} else {
       this.login.reset();
 			this.error = "Please enter username and password";
