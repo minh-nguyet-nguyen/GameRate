@@ -38,8 +38,8 @@
 
                 <div class="row">
                     <div class="form-actions">
-                        <input *ngIf="!gameForm.value.id" type="submit" id="addButton" (click)=add(gameForm.value) value="Submit" class="btn btn-primary btn-sm">
-                        <input *ngIf="gameForm.value.id" type="submit" id="updateButton" (click)=update(gameForm.value) value="Update" class="btn btn-primary btn-sm">
+                        <input *ngIf="!gameForm.value.id" type="submit" id="addButton" (click)=add(gameForm.value) value="Submit" class="btn btn-primary btn-sm" [disabled]="gameForm.invalid">
+                        <input *ngIf="gameForm.value.id" type="submit" id="updateButton" (click)=update(gameForm.value) value="Update" class="btn btn-primary btn-sm" [disabled]="gameForm.invalid">
                         <button type="button" id="resetButton" (click)="reset()" class="btn btn-warning btn-sm">Reset Form</button>
                     </div>
                 </div>
