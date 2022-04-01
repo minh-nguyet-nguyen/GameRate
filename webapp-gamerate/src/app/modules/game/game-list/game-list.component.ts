@@ -61,7 +61,7 @@ export class GameListComponent implements OnInit {
     }
 
     edit(game: Game) {
-        var id = game.id;
+        let id = game.id;
         console.log('id to be edited', id);
         this.gameForm.patchValue({
             id: game.id,
