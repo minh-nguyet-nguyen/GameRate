@@ -104,21 +104,21 @@ public class GameTest {
 	
 	@Test
 	public void givenGamePage_whenEmptyTitle_thenAddButtonIsDisabled() {
-		clear();
+		resetButton.click();
 		enterFormData("", "good music", 5);
 		assertFalse(isElementEnabled("addButton", addButton));
 	}
 	
 	@Test
 	public void givenGamePage_whenEmptyRating_thenAddButtonIsDisabled() {
-		clear();
+		resetButton.click();
 		enterFormData("Hollow Knight", "good music", null);
 		assertFalse(isElementEnabled("addButton", addButton));
 	}
 	
 	@Test
 	public void givenPreAddedGame_whenTitleIsChanged_thenGameIsUpdated() {
-		clear();
+		resetButton.click();
 		enterFormData("Hollow Knight", "good music", 5);
 		assertTrue(isElementEnabled("addButton", addButton));
 		addButton.click();
@@ -137,7 +137,7 @@ public class GameTest {
 	
 	@Test
 	public void givenPreAddedGame_whenCommentIsChanged_thenGameIsUpdated() {
-		clear();
+		resetButton.click();
 		enterFormData("Hollow Knight", "good music", 5);
 		assertTrue(isElementEnabled("addButton", addButton));
 		addButton.click();
@@ -154,7 +154,7 @@ public class GameTest {
 	
 	@Test
 	public void givenPreAddedGame_whenRatingIsChanged_thenGameIsUpdated() {
-		clear();
+		resetButton.click();
 		enterFormData("Hollow Knight", "good music", 5);
 		assertTrue(isElementEnabled("addButton", addButton));
 		addButton.click();
