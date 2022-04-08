@@ -1,0 +1,16 @@
+<div class="wrapper">
+	<div class="inner-warpper text-center">
+		<img class="mb-4 img-fluid" src="../../assets/consoles.gif" alt="consoles-gif"/>
+		<h2 style="font-family:Tahoma">GameRate</h2>
+		<form [formGroup]="login" (submit)="userLogin()">
+		<div class="input-group">
+			<input type="text" name="username" id="username" formControlName="username" placeholder="Username"><br>
+		</div>
+		<div class="input-group">
+			<input type="password" name ="password" id="password" formControlName="password" placeholder="Password"><br><br>
+		</div>
+		<p id="errorMessage" style="color: red">{{error}}</p>
+		<button type="submit" id="loginButton">Login</button>
+		</form>
+	</div>
+</div>

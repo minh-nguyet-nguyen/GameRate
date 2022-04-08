@@ -1,0 +1,77 @@
+<div class="generic-container">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="lead">Game Registration Form </span>
+            <a class="floatRight" style="font-size:18px" href="/home" id="homeLink">Home</a>
+        </div>
+        <div id="gameForm" class="formcontainer">
+            <form [formGroup]="gameForm" (ngSubmit)="submit()" class="form-horizontal">
+                <input type="hidden" ng-model="game.id" />
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="file">Title</label>
+                        <div class="col-md-7">
+                            <input type="text" id="title" formControlName="title" name="title" class="form-control input-sm" placeholder="Enter the game's title" required/>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="file">Comment</label>
+                        <div class="col-md-7">
+                            <input type="text" id="comment" formControlName="comment" name="comment" class="form-control input-sm" placeholder="Enter your comments for the game (optional)"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="file">Rating</label>
+                        <div class="col-md-7">
+                            <input type="number" id="rating" formControlName="rating" name="rating" class="form-control input-sm" placeholder="Enter your rating for the game: 1-5" required min="1" max="5"/>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="form-actions">
+                        <input *ngIf="!gameForm.value.id" type="submit" id="addButton" (click)=add(gameForm.value) value="Submit" class="btn btn-primary btn-sm" [disabled]="gameForm.invalid">
+                        <input *ngIf="gameForm.value.id" type="submit" id="updateButton" (click)=update(gameForm.value) value="Update" class="btn btn-primary btn-sm" [disabled]="gameForm.invalid">
+                        <button type="button" id="resetButton" (click)="reset()" class="btn btn-warning btn-sm">Reset Form</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading"><span class="lead">List of Games </span></div>
+        <div class="tablecontainer">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Comment</th>
+                        <th>Rating</th>
+                        <th width="20%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="list" *ngFor="let game of games">
+                        <td><span id="gameId">{{game.id}}</span></td>
+                        <td><span id="gameTitle">{{game.title}}</span></td>
+                        <td><span id="gameComment">{{game.comment}}</span></td>
+                        <td><span id="gameRating">{{game.rating}}</span></td>
+                        <td>
+                        <button type="button" id="editButton" (click)="edit(game)" class="btn btn-success custom-width">Edit</button>
+                        <button type="button" id="deleteButton" (click)="delete(game)" class="btn btn-danger custom-width">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

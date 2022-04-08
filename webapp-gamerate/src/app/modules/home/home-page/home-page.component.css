@@ -1,0 +1,12 @@
+.wrapper {
+    width: 640px;
+    background: #f2f2f2;
+    margin: 20px auto;
+    min-height: 200px;
+    border: 1px solid #f3f3f3;
+}
+
+.wrapper .inner-warpper {
+    padding: 50px 30px 60px;
+    box-shadow: 1px 1.732px 10px 0px rgba(0, 0, 0, 0.063);
+}

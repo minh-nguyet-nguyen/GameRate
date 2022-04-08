@@ -32,10 +32,10 @@ import com.minh.project.GameRateService.repository.GameRepository;
 public class GameServiceTest extends AbstractTestNGSpringContextTests {
 	
 	@Autowired
-	GameRepository gameRepository;
+	private GameRepository gameRepository;
 	
 	@Autowired
-	GameService gameService;
+	private GameService gameService;
 	
 	@BeforeClass
 	public void setup() {
